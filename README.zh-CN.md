@@ -1,3 +1,11 @@
+## 你的专属版本：TikTok AI 视频趋势雷达
+
+新增 `python3 -m radar videos scan --config video-radar.json`，专门发现可复刻的 AI 视频玩法，收集不同作者作品、播放表现、制作询问、工具搜索词和历史增速。支持本地报告、CSV 挑词和人工选择记录。
+
+**[专属雷达使用说明](docs/VIDEO_RADAR.md)** · `python3 -m radar videos demo` 可先查看虚构演示；真实采集需配置 `TIKHUB_API_KEY`，可选 `AISA_API_KEY` 核验搜索/Trends。没有密钥不会生成假趋势。
+
+以下为保留的上游项目说明。
+
 <div align="center">
 
 <img src="docs/logo.svg" width="128" alt="新词雷达 logo：雷达扫到一个新亮点">
@@ -464,3 +472,4 @@ python -m pytest -q tests
 ## 许可
 
 MIT。这套雷达提取自 [agentskillshub.top](https://agentskillshub.top) 背后每天在跑的版本。
+

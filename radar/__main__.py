@@ -250,6 +250,10 @@ def serve_mcp() -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
+    video_args = sys.argv[1:] if argv is None else argv
+    if video_args[:1] == ["videos"]:
+        from . import video_radar
+        return video_radar.main(video_args[1:])
     if (sys.argv[1:] if argv is None else argv)[:1] == ["mcp"]:
         return serve_mcp()
     prog = "python -m radar" if __package__ == "radar" else "new-term-radar"  # installed, the package has another name
@@ -299,3 +303,4 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+

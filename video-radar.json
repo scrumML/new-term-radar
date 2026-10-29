@@ -1,0 +1,21 @@
+{
+  "regions": ["US"],
+  "window_days": 7,
+  "new_window_hours": 72,
+  "seed_terms": ["hotel lobby", "ai raindance", "ai zombie", "burning bridges", "bulin 47"],
+  "discovery_queries": [
+    "ai video trend", "ai dance trend", "ai photo animation trend",
+    "ai couple trend", "new ai effect", "capcut ai template"
+  ],
+  "aliases": {
+    "hotellobby": "hotel lobby", "airaindance": "ai raindance", "aizombie": "ai zombie",
+    "burningbridges": "burning bridges", "bulin47": "bulin 47"
+  },
+  "min_views": 100000,
+  "min_authors": 3,
+  "min_hit_authors": 2,
+  "max_candidates": 8,
+  "max_tikhub_requests": 32,
+  "comment_videos": 6,
+  "research": {"enabled": true, "max_candidates": 3, "location_code": 2840, "language": "en"}
+}
