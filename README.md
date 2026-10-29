@@ -1,3 +1,11 @@
+## Personal TikTok AI remake radar
+
+This fork adds `python3 -m radar videos scan --config video-radar.json`: video/author evidence, creation-demand comments, candidate keyword discovery, observation history, local HTML/CSV reports and manual selections. Original commands are preserved.
+
+Read [the dedicated Chinese guide](docs/VIDEO_RADAR.md). Try `python3 -m radar videos demo` with clearly labeled synthetic data. Live collection requires `TIKHUB_API_KEY`; optional `AISA_API_KEY` enables upstream search/Trends verification. Missing credentials produce an explicit blocked report.
+
+Original upstream documentation follows.
+
 <div align="center">
 
 <img src="docs/logo.svg" width="128" alt="new-term-radar logo: a radar sweep catching a new blip">
@@ -471,3 +479,4 @@ The diagram is drawn by `docs/make_diagram.py` (needs `rsvg-convert` and `ffmpeg
 MIT. Extracted from the radar that runs daily behind [agentskillshub.top](https://agentskillshub.top).
 
 <!-- mcp-name: io.github.zhuyansen/new-term-radar -->
+

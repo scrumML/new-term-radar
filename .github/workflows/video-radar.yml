@@ -1,0 +1,50 @@
+name: Personal TikTok video radar
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 6,18 * * *'
+permissions:
+  contents: read
+concurrency:
+  group: personal-video-radar
+  cancel-in-progress: false
+jobs:
+  scan:
+    # Enable this separately from the upstream general AI radar.
+    if: vars.VIDEO_RADAR_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache/restore@v4
+        with:
+          path: state/videos
+          key: video-radar-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: video-radar-v1-
+      - name: Scan and verify
+        env:
+          TIKHUB_API_KEY: ${{ secrets.TIKHUB_API_KEY }}
+          AISA_API_KEY: ${{ secrets.AISA_API_KEY }}
+        run: python -m radar videos scan --config video-radar.json
+      - name: Show report
+        if: always()
+        run: |
+          if [ -f reports/videos/latest/report.md ]; then
+            cat reports/videos/latest/report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: state/videos
+          key: video-radar-v1-${{ github.run_id }}-${{ github.run_attempt }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: personal-video-radar-${{ github.run_id }}
+          path: |
+            reports/videos/latest/
+            state/videos/video-radar.db
+          retention-days: 30
